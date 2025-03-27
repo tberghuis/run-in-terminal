@@ -39,8 +39,10 @@ export function activate(context: vscode.ExtensionContext) {
           );
         });
 
-      const newPosition = new vscode.Position(endLine + 1, 0);
-      editor.selection = new vscode.Selection(newPosition, newPosition);
+      if (endLine + 1 < editor.document.lineCount) {
+        const newPosition = new vscode.Position(endLine + 1, 0);
+        editor.selection = new vscode.Selection(newPosition, newPosition);
+      }
     }
   );
 
